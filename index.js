@@ -21,7 +21,7 @@ app.get('/', function(req, res){
 
 if(session.session)
 	app.put('/' + session.session, function(req, res){
-		redirect_host = req.connection.remoteAddress;
+		redirect_host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 		redirect_port = req.body.port || 8080;
 		console.log(redirect_host, redirect_port);
 		res.send({
