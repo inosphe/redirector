@@ -24,7 +24,10 @@ if(session.session)
 		redirect_host = req.connection.remoteAddress;
 		redirect_port = req.body.port || 8080;
 		console.log(redirect_host, redirect_port);
-		res.sendStatus(200);
+		res.send({
+			redirect_host
+			, redirect_port
+		})
 	})
 
 var port = process.env.PORT || 8000;
